@@ -6,18 +6,19 @@
 // The result can be in any order.
 
 vector<int> Solution::solve(vector<int> &A, vector<int> &B) {
-    int n = A.size(), m = B.size();
-    unordered_map<int,int> hashmap;
-    for(int i = 0 ; i < n; i++){
-        hashmap[A[i]] ++;
-        assert(A[i] >= 1 && A[i] <= 1e9);
+    unordered_map<int, int> Amap;
+    vector<int> C;
+    int N = A.size();
+    int M = B.size();
+    for(int i=0; i<N; i++){ 
+            Amap[A[i]]++;
     }
-    vector<int> ans;
-    for(int i = 0; i < m; i++){
-        if(hashmap.find(B[i]) != hashmap.end() && hashmap[B[i]] != 0){
-            ans.push_back(B[i]);
-            hashmap[B[i]]--;
-        }
+    for(int i=0; i<M; i++){
+       if(Amap[B[i]] != 0){
+           C.push_back(B[i]);
+           Amap[B[i]]--;
+       }
     }
-    return ans;
+    sort(C.begin(), C.end());
+    return C;
 }

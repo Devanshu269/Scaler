@@ -7,20 +7,22 @@
 // If there is no repeating element, return -1.
 
 int Solution::solve(vector<int> &A) {
-    int n = A.size();
-    // Initialize index of first repeating element     int mini = -1;
+    map<int, int> Amap;
+    int N = A.size();
+    for(int i=0; i<N; i++){
+        auto it = Amap.find(A[i]);
+        if(it == Amap.end()){
+            Amap.insert({A[i], 1});
+        }else{
+            Amap[A[i]]++;
+        }
 
-    // Creates an empty hashset named ump     unordered_map<int,int> ump;
-
-    // Traverse the input array from right to left     for (int i = n - 1; i >= 0; i--)
-    {
-        // If element is already in hash set, update min         if (ump.find(A[i]) != ump.end())
-            mini = i;
-        else   // Else add element to hash set             ump[A[i]] = 1;
     }
-    if(mini == -1){
-        return mini;
+    for(int i=0; i<N; i++){
+        if(Amap[A[i]]>1){
+           return A[i];
+       }
     }
-    return A[mini];
+    return -1;
 }
 
