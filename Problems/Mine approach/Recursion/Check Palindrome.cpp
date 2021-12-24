@@ -3,8 +3,8 @@
 
 // Note: A palindrome is a string that's the same when reads forwards and backwards.
 
-bool checkPali(string s, int start, int end){
-    if(start > end)
+int checkPali(string &s, int start, int end){
+    if(start >= end)
     {
         return 1;
     }
@@ -21,7 +21,7 @@ bool checkPali(string s, int start, int end){
     }
 }
 int Solution::solve(string A) {
-    int N = A.length();
+    int N = A.size();
     int st = 0;
     int end = N-1;
     return checkPali(A, st, end);
