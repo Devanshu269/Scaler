@@ -1,14 +1,13 @@
-// Problem Description
+/*Given a positive integer A, return an array of strings with all the integers from 1 to N. But for multiples of 3 the array should have 
+“Fizz” instead of the number. For the multiples of 5, the array should have “Buzz” instead of the number. For numbers which are multiple of 3 and 5 both, 
+the array should have "FizzBuzz" instead of the number.*/
 
-// Given a positive integer A, return an array of strings with all the integers from 1 to N. 
-// But for multiples of 3 the array should have “Fizz” instead of the number. For the multiples of 5, 
-// the array should have “Buzz” instead of the number.For numbers which are multiple of 3 and 5 both, 
-// the array should have "FizzBuzz" instead of the number.
 
-vector<string> Solution::fizzBuzz(int A) {
+//My solution
+vector<string> Solution::fizzBuzz(int A) {        
     vector<string> ans;
     for(int i=1; i<=A; i++){
-        if(i%3==0 && i%5==0){
+        if(i%15==0){
             ans.push_back("FizzBuzz");
         }else if(i%3==0){
              ans.push_back("Fizz");
@@ -18,6 +17,43 @@ vector<string> Solution::fizzBuzz(int A) {
             ans.push_back(to_string(i));
         }
         
+    }
+    return ans;
+}
+
+//Another way
+vector<string> Solution::fizzBuzz(int A) {
+    vector<string> ans;
+    int c3=0, c5=0;
+    for(int i=1; i<=A; i++){
+        c3++, c5++;
+        string d = "";
+        if(c3==3){
+            d += "Fizz";
+            c3=0;
+        }
+        if(c5==5){
+            d += "Buzz";
+            c5=0;
+        }
+        if(d == ""){
+            ans.push_back(to_string(i));
+        }else{
+            ans.push_back(d);
+        }
+    }
+    return ans;
+}
+
+//Complete solution
+vector<string> Solution::fizzBuzz(int A) {
+    vector<string> ans;
+    for (int i = 1; i <= A; i++) {
+        string toPush = "";
+        if (i % 3 == 0) toPush += "Fizz";
+        if (i % 5 == 0) toPush += "Buzz";
+        if (i % 3 != 0 && i % 5 != 0) toPush += to_string(i);
+        ans.push_back(toPush);
     }
     return ans;
 }

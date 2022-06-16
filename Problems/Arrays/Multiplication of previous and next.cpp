@@ -1,6 +1,6 @@
-//Given an array of integers A, update every element with multiplication of previous and next elements 
+// Given an array of integers A, update every element with multiplication of previous and next elements 
 // with following exceptions. a) First element is replaced by multiplication of first and second. 
-//b) Last element is replaced by multiplication of last and second last.
+// b) Last element is replaced by multiplication of last and second last.
 
 vector<int> Solution::solve(vector<int> &A) {
     int N=A.size();

@@ -1,81 +1,37 @@
 //Problem Description
-//Given an array of size N, Find the subarray with least average of size k.
+// Given an array of size N, find the subarray of size K with the least average.
 
-//3 method are there
-
-//optimal 
-int Solution::solve(vector<int> &A, int B) {
-    int N = A.size();
-    if (N < B)
-        return -1;
+int findMinAvgSubarray(int arr[], int n, int k)
+{
+  
+    // Initialize  beginning index of result
     int res_index = 0;
- 
+  
+    // Compute sum of first subarray of size k
     int curr_sum = 0;
-    for (int i = 0; i < B; i++){
-        curr_sum += A[i];
-    }
-        
+    for (int i = 0; i < k; i++)
+        curr_sum += arr[i];
+  
+    // Initialize minimum sum as current sum
     int min_sum = curr_sum;
-
-    for (int i = B; i < N; i++) {
-
-        curr_sum += A[i] - A[i - B];
-
+  
+    // Traverse from (k+1)'th element to n'th element
+    for (int i = k; i < n; i++) {
+        // Add current item and remove first item of
+        // previous subarray
+        curr_sum += arr[i] - arr[i - k];
+  
+        // Update result if needed
         if (curr_sum < min_sum) {
             min_sum = curr_sum;
-            res_index = (i - B + 1);
+            res_index = (i - k + 1);
         }
     }
     return res_index;
 }
-
-//using prefix sum
 int Solution::solve(vector<int> &A, int B) {
-    int N = A.size();
-    if (N < B){
-        return -1;
-    }
-    int res_index = 0;
-    int PS[N];
-    for(int i=0; i<N; i++){
-        if(i==0){
-            PS[0]=A[0];
-        }else{
-            PS[i] = PS[i-1] + A[i];
-        }
-    }
-    int Lavg = PS[B-1];
-    res_index = 0;
-    int cuu_avg = 0;
-    for(int i=1; i<=N-B; i++){
-        cuu_avg = PS[i+B-1]-PS[i-1];
-        if(cuu_avg < Lavg){
-            Lavg = cuu_avg;
-            res_index = i;
-        }
-    }
-    return res_index;
- 
+    int n=A.size();
+    int arr[n];
+    for(int i=0;i<n;i++) arr[i]=A[i];
+    return findMinAvgSubarray(arr,n,B);
 }
-
-//Brute force(TLE)
-int Solution::solve(vector<int> &A, int B) {
-    int N = A.size();
-    int index;
-    for(int i=0; i<=N-B; i++){
-        int s = i, e = B+i-1;
-        int sum=0;
-        int MinAvg = INT_MAX;
-        for(int j=s; j<=e; j++){
-            sum = sum + A[j];
-        }
-        if(sum<MinAvg){
-            MinAvg = sum;
-            index = i-1;
-        }
-    }
-    return index;
-}
-
-
-

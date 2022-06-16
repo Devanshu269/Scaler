@@ -1,3 +1,5 @@
+// Problem Description
+
 // You are given a constant array A and an integer B.
 
 // You are required to return another array where outArr[i] = A[i] + B.

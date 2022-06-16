@@ -1,8 +1,6 @@
-//Problem Description
+// You are given a constant array A.
 
-//You are given a constant array A.
-
-//You are required to return another array which is the reversed form of input array.
+// You are required to return another array which is the reversed form of the input array.\
 
 vector<int> Solution::solve(const vector<int> &A) {
     vector<int> D;

@@ -1,10 +1,9 @@
-// Problem Description
+// Given an integer array A containing N distinct integers, you have to find all the leaders in array A.
 
-// Given an integer array A containing N distinct integers, you have to find all the leaders in the array A.
+// An element is a leader if it is strictly greater than all the elements to its right side.
 
-// An element is leader if it is strictly greater than all the elements to its right side.
+// NOTE:The rightmost element is always a leader.
 
-// NOTE:The rightmost element is always a leader
 vector<int> printLeaders(vector<int>& arr) 
 { 
     int size = arr.size();

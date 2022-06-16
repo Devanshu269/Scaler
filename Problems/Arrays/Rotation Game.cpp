@@ -1,6 +1,6 @@
-// Problem Description
+// Given an integer array A of size N and an integer B, you have to print the same array after 
+//rotating it B times towards the right
 
-// You are given an integer array A and an integer B. You have to print the same array after rotating it B times towards right.
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
